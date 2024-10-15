@@ -12,7 +12,7 @@
     function App() {
         // 상태 정의
         const [amount, setAmount] = React.useState(0); // minutes 상태를 정의
-        const [flipped, setFlipped] = React.useState(false);
+        const [inverted, setInverted] = React.useState(false);
         // flipped 는 true OR false
     
 
@@ -22,7 +22,7 @@
         const reset = () => setAmount(0);
         const onFlip = () => {
             reset();
-            setFlipped((current) => !current);
+            setInverted((current) => !current);
         } 
 
         return(
@@ -31,27 +31,27 @@
             <div>
             <label htmlFor="minutes">Minutes</label>
             <input 
-                value={flipped ? amount*60 : amount}
+                value={inverted ? amount*60 : amount}
                 id="minutes"
                 placeholder="Minutes"
                 type="number" 
                 onChange={onChange}  // 상태 변화 처리
-                disabled={flipped}
+                disabled={inverted}
                 />
         
                 <label htmlFor="hours">Hours</label>
                 <input 
-                    value={flipped ? amount : Math.round(amount/60)} // 이 공식이 minutes 를 입력시에만 나오게 만들고 싶음.
+                    value={inverted ? amount : Math.round(amount/60)} // 이 공식이 minutes 를 입력시에만 나오게 만들고 싶음.
 
                     id="hours"
                     placeholder="Hours" 
                     type="number" 
                     onChange={onChange}
-                    disabled={!flipped}
+                    disabled={!inverted}
                 />
             </div>
             <button onClick={reset}>Reset</button>
-            <button onClick={onFlip}>Flip</button>
+            <button onClick={onFlip}>{inverted ? "Turn back" : "Invert"}</button>
          
         </div>
         );
