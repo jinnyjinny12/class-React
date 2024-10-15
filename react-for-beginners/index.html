@@ -11,11 +11,19 @@
     const root = document.getElementById("root"); 
     function App() {
         // 상태 정의
-        const [minutes, setMinutes] = React.useState(0); // minutes 상태를 정의
+        const [amount, setAmount] = React.useState(0); // minutes 상태를 정의
+        const [flipped, setFlipped] = React.useState(false);
+        // flipped 는 true OR false
+    
+
         const onChange = (event) => {
-           setMinutes(event.target.value);
+            setAmount(event.target.value);
         }
-        const reset = () => setMinutes(0);
+        const reset = () => setAmount(0);
+        const onFlip = () => {
+            reset();
+            setFlipped((current) => !current);
+        } 
 
         return(
         <div>
@@ -23,23 +31,27 @@
             <div>
             <label htmlFor="minutes">Minutes</label>
             <input 
-                value={minutes}
+                value={flipped ? amount*60 : amount}
                 id="minutes"
                 placeholder="Minutes"
                 type="number" 
                 onChange={onChange}  // 상태 변화 처리
+                disabled={flipped}
                 />
-            <h4>You want to change {minutes}</h4>
         
                 <label htmlFor="hours">Hours</label>
                 <input 
-                    value={Math.round(minutes/60)}
+                    value={flipped ? amount : Math.round(amount/60)} // 이 공식이 minutes 를 입력시에만 나오게 만들고 싶음.
+
                     id="hours"
                     placeholder="Hours" 
                     type="number" 
+                    onChange={onChange}
+                    disabled={!flipped}
                 />
             </div>
             <button onClick={reset}>Reset</button>
+            <button onClick={onFlip}>Flip</button>
          
         </div>
         );
