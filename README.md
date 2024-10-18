@@ -1,10 +1,9 @@
 # class-React
 nomade coder react 이론 내용정리
-
-## react hooks
-
 이 프로젝트는 다양한 리액트 커스텀 훅을 모아둔 학습용 프로젝트입니다. 
 각 훅은 특정한 기능을 수행하며, 리액트 애플리케이션에서 쉽게 활용할 수 있습니다.
+
+<br>
 
 ## Project Setup
 
@@ -21,6 +20,8 @@ npx
 ```sh
 npx create-react-app 파일명
 ```
+
+<br>
 
 # 커스텀 훅 목록
 
